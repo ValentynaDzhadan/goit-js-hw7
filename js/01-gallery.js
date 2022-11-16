@@ -25,6 +25,8 @@ refs.galleryBoxElem.innerHTML = createMarkup(galleryItems);
 
 refs.galleryBoxElem.addEventListener("click", openModal);
 
+let instance;
+
 function openModal(event) {
   event.preventDefault();
   if (event.target.nodeName !== "IMG") {
@@ -32,15 +34,13 @@ function openModal(event) {
   }
   const originalUrl = event.target.dataset.source;
 
-  const instance = basicLightbox.create(
+  instance = basicLightbox.create(
     `<img src="${originalUrl}" width="800" height="600">`
   );
   instance.show();
 }
 
 refs.galleryBoxElem.addEventListener("keydown", closeImg);
-
-/// is not working /// instance is not defined /// HELP
 
 function closeImg(event) {
   if (event.code === "Escape") {
